@@ -1,5 +1,5 @@
 from typing import Dict, Any
-import os
+
 import csv
 
 try:

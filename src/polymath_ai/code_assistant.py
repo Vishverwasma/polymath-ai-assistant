@@ -21,9 +21,16 @@ def generate_code(prompt: str, assistant: Assistant = None) -> str:
 def run_code(code: str, timeout: int = 5) -> Tuple[int, str, str]:
     """Run Python code in a temporary file with a timeout. Returns (exitcode, stdout, stderr).
 
-    Runs with sys.executable, catches timeouts and exceptions, and cleans up the temp file.
+    Execution is disabled by default and must be explicitly enabled by setting
+    the environment variable POLYMATH_ALLOW_CODE_EXECUTION=1. This prevents accidental
+    execution when the project is imported in CI or other environments.
     """
-    import sys, traceback
+    import sys
+    import traceback
+    allow = os.environ.get("POLYMATH_ALLOW_CODE_EXECUTION", "0").lower()
+    if allow not in ("1", "true", "yes"):
+        return -3, "", "Code execution disabled by POLYMATH_ALLOW_CODE_EXECUTION"
+
     path = None
     try:
         with tempfile.NamedTemporaryFile('w', suffix='.py', delete=False) as fh:
