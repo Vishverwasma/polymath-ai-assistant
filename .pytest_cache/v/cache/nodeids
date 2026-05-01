@@ -1,0 +1,9 @@
+[
+  "tests/test_assistant.py::test_no_api_key_raises",
+  "tests/test_code_assistant.py::test_run_code_simple",
+  "tests/test_data_analysis.py::test_analyze_csv_numeric",
+  "tests/test_doc_reader.py::test_summarize_text_no_api_key",
+  "tests/test_web.py::test_analyze_endpoint",
+  "tests/test_web.py::test_generate_code_endpoint",
+  "tests/test_web.py::test_health"
+]
