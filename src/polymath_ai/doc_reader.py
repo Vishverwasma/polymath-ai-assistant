@@ -1,3 +1,5 @@
+import os
+
 try:
     from pypdf import PdfReader
 except Exception:
