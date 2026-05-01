@@ -1,4 +1,3 @@
-import pytest
 from fastapi.testclient import TestClient
 from polymath_ai import web
 
